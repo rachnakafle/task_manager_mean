@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 
 const {mongoose} = require('./db/mongoose')
-//const schema = mongoose.ListSchema
+const schema = mongoose.Schema
 
 const bodyParser = require('body-parser');
 
