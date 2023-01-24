@@ -1,13 +1,14 @@
 const express = require("express");
 const app = express();
+const List = require('./db/models/list.model')
 
 const {mongoose} = require('./db/mongoose')
-const schema = mongoose.Schema
+
 
 const bodyParser = require('body-parser');
 
 //Load in the mongoose models
-const {List, Task} = require('./db/models');
+// const {List, Task} = require('./db/models');
 
 //Load middleware
 app.use(bodyParser.json());
@@ -26,8 +27,7 @@ app.get("/lists", (req, res) => {
   // res.send("Hello World!!");
   List.find({}).then((lists)=>{
     res.send(lists);
-  })
-
+  });
 });
 
 /***
@@ -42,8 +42,7 @@ app.post("/lists", (req, res) => {
 
   let newList = new List({
     title
-  })
-
+  });
   newList.save().then((listDoc)=>{
     //the full list document is returned (incl. id)
 
